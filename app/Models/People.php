@@ -14,6 +14,7 @@ class People extends Model
         'surname',
         'phonenumber',
         'street',
-        'city'
+        'city',
+        'id'
     ];
 }

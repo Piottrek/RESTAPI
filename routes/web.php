@@ -18,6 +18,8 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-
-
-Route::resource('people', PeopleController::class);
+Route::get('piotrszczepanik/305407/people', [PeopleController::class, 'index']); 
+Route::get('piotrszczepanik/305407/people/{people}', [PeopleController::class, 'show']);
+Route::delete('piotrszczepanik/305407/people/{people}', [PeopleController::class, 'destroy']);
+Route::put('piotrszczepanik/305407/people/{people}', [PeopleController::class, 'update']);
+Route::post('piotrszczepanik/305407/people/{people}', [PeopleController::class, 'store']);

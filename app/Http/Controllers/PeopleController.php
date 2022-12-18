@@ -14,7 +14,7 @@ class PeopleController extends Controller
      */
     public function index()
     {
-        //
+        return response()->json(People::all(), 200);
     }
 
     /**
@@ -33,9 +33,13 @@ class PeopleController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Request $request, $id)
     {
-        //
+        $people = $request->all();
+        $people['id'] = $id;
+        $people = People::create($people);
+
+        return response()->json($people, 200);
     }
 
     /**
@@ -46,7 +50,7 @@ class PeopleController extends Controller
      */
     public function show(People $people)
     {
-        //
+        return response()->json($people, 200);
     }
 
     /**
@@ -69,7 +73,9 @@ class PeopleController extends Controller
      */
     public function update(Request $request, People $people)
     {
-        //
+        $people->update($request->all());
+
+        return response()->json($people, 200);
     }
 
     /**
@@ -80,6 +86,8 @@ class PeopleController extends Controller
      */
     public function destroy(People $people)
     {
-        //
+        $people->delete();
+
+        return response('Item deleted.', 200);
     }
 }
